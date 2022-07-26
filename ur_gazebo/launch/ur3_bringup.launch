@@ -48,7 +48,7 @@
 
   <!-- Gazebo parameters -->
   <arg name="paused" default="false" doc="Starts Gazebo in paused mode" />
-  <arg name="gui" default="true" doc="Starts Gazebo gui" />
+  <arg name="gui" default="false" doc="Starts Gazebo gui" />
 
   <!-- Load urdf on the parameter server -->
   <include file="$(arg robot_description_file)">
