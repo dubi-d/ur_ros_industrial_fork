@@ -133,9 +133,16 @@
           <mesh filename="${upper_arm_collision_mesh}"/>
         </geometry>
       </collision>
-      <xacro:cylinder_inertial radius="${upperarm_inertia_radius}" length="${upperarm_inertia_length}" mass="${upper_arm_mass}">
-        <origin xyz="${-0.5 * upperarm_inertia_length} 0.0 ${upper_arm_inertia_offset}" rpy="0 ${pi/2} 0" />
-      </xacro:cylinder_inertial>
+      <!--xacro:cylinder_inertial radius="${upperarm_inertia_radius}" length="${upperarm_inertia_length}" mass="${upper_arm_mass}">
+        <origin xyz="${-0.5 * upperarm_inertia_length} 0.0 ${upper_arm_inertia_offset}" rpy="0 0 0" />
+      </xacro:cylinder_inertial-->
+      <inertial>
+        <mass value="${upper_arm_mass}" />
+        <origin xyz="${-0.5 * upperarm_inertia_length} 0.0 ${upper_arm_inertia_offset}" rpy="0 0 0" />
+        <inertia ixx="${0.5 * upper_arm_mass * upperarm_inertia_radius * upperarm_inertia_radius}" ixy="0.0" ixz="0.0"
+                 iyy="${0.0833333 * upper_arm_mass * (3 * upperarm_inertia_radius * upperarm_inertia_radius + upperarm_inertia_length * upperarm_inertia_length)}" iyz="0.0"
+                 izz="${0.0833333 * upper_arm_mass * (3 * upperarm_inertia_radius * upperarm_inertia_radius + upperarm_inertia_length * upperarm_inertia_length)}" />
+      </inertial>
     </link>
     <link name="${prefix}forearm_link">
       <visual>
@@ -153,9 +160,16 @@
           <mesh filename="${forearm_collision_mesh}"/>
         </geometry>
       </collision>
-      <xacro:cylinder_inertial radius="${forearm_inertia_radius}" length="${forearm_inertia_length}"  mass="${forearm_mass}">
-        <origin xyz="${-0.5 * forearm_inertia_length} 0.0 ${elbow_offset}" rpy="0 ${pi/2} 0" />
-      </xacro:cylinder_inertial>
+      <!--xacro:cylinder_inertial radius="${forearm_inertia_radius}" length="${forearm_inertia_length}"  mass="${forearm_mass}">
+        <origin xyz="${-0.5 * forearm_inertia_length} 0.0 ${elbow_offset}" rpy="0 0 0" />
+      </xacro:cylinder_inertial-->
+      <inertial>
+        <mass value="${forearm_mass}" />
+        <origin xyz="${-0.5 * forearm_inertia_length} 0.0 ${elbow_offset}" rpy="0 0 0" />
+        <inertia ixx="${0.5 * forearm_mass * forearm_inertia_radius * forearm_inertia_radius}" ixy="0.0" ixz="0.0"
+                 iyy="${0.0833333 * forearm_mass * (3 * forearm_inertia_radius * forearm_inertia_radius + forearm_inertia_length * forearm_inertia_length)}" iyz="0.0"
+                 izz="${0.0833333 * forearm_mass * (3 * forearm_inertia_radius * forearm_inertia_radius + forearm_inertia_length * forearm_inertia_length)}" />
+      </inertial>
     </link>
     <link name="${prefix}wrist_1_link">
       <visual>
